@@ -1,24 +1,49 @@
 package main.java.database;
 
-import java.io.*;
-import java.util.ArrayList;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.util.List;
+import java.util.Scanner;
 
 public class BancoDeDados {
-
-    /* public void GravarDados(ArrayList<>) {
+    
+    static public void salvarNovoRegistro(String nomeArquivo, String texto) {
         try {
+            FileWriter fwArquivo;
+            BufferedWriter bwArquivo;
+            File arquivo = new File(nomeArquivo);
 
-            File file = new File("arquivo.csv");
-            ObjectOutputStream output = new ObjectOutputStream(new FileOutputStream(file));
+            fwArquivo = new FileWriter(arquivo, arquivo.exists());
+            bwArquivo = new BufferedWriter(fwArquivo);
+            bwArquivo.write(texto + '\n');
 
-            output.;
+            bwArquivo.close();
+            fwArquivo.close();
 
-            output.close();
-            System.out.println("Dados salvos com sucesso!");
-        } catch (Exception e) {
-            System.out.println(e.toString());
+        } catch (IOException e) {
+            System.err.println("Erro ao tentar escrever no arquivo: " + e.toString());
         }
-    } */
+    }
 
+    static public List<String[]> lerListaDeRegistros(String nomeArquivo) {
+        List<String[]> registers = List.of();
+        try {
+            File file = new File(nomeArquivo);
 
+            Scanner fileReader = new Scanner(file);
+            while (fileReader.hasNextLine()) {
+                String data = fileReader.nextLine();
+                registers.add(data.split(";"));
+                System.out.println(data);
+            }
+            fileReader.close();
+
+        } catch (IOException e) {
+            System.err.println("Erro ao tentar escrever no arquivo: " + e.toString());
+        }
+        return registers;
+    }
+    
 }
