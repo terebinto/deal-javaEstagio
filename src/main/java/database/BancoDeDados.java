@@ -1,3 +1,5 @@
+// TODO: Implementar update/ delete registro
+
 package main.java.database;
 
 import java.io.File;
