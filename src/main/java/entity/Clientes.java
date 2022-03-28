@@ -6,11 +6,13 @@ public class Clientes {
     // private String endereco;
     private String rg;
     private String cpf;
+    private int id;
 
-    public Clientes( String nome, String rg, String cpf) {
+    public Clientes( String nome, String rg, String cpf, int id) {
         this.nome = nome;
         this.rg = rg;
         this.cpf = cpf;
+        this.id= id;
     }
 
     public String getNome() { return nome; }
@@ -24,5 +26,9 @@ public class Clientes {
     public String getCpf() { return cpf; }
 
     public void setCpf(String cpf) { this.cpf = cpf; }
+
+    public int getid() {return id;}
+    
+    public void setId(int id) {this.id = id;}
 
 }
