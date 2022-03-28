@@ -5,10 +5,10 @@ public class Filmes {
 
     private int id;
     private String titulo;
-    private Genero genero;
+    private String genero;
     private String classificacao;
 
-    public Filmes(int id, String titulo, Genero genero, String classificacao) {
+    public Filmes(int id, String titulo, String genero, String classificacao) {
         this.id = id;
         this.titulo = titulo;
         this.genero = genero;
@@ -31,11 +31,11 @@ public class Filmes {
         this.titulo = titulo;
     }
 
-    public Genero getGenero() {
+    public String getGenero() {
         return genero;
     }
 
-    public void setGenero(Genero genero) {
+    public void setGenero(String genero) {
         this.genero = genero;
     }
 
