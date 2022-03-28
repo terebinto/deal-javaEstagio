@@ -6,7 +6,7 @@ import main.java.database.BancoDeDados;
 
 public class ModelClientes {
 
-    private final String arquivo = "clientes.txt";
+    private final String arquivo = "clientes.csv";
 
     public String getArquivo() {
         return arquivo;
@@ -28,12 +28,4 @@ public class ModelClientes {
         }
     }
 
-    public void alterar(String registroID, Clientes cliente) {
-        String registro = cliente.getNome() + ";" + cliente.getid() + ";" + cliente.getRg() + ";" + cliente.getCpf();
-        BancoDeDados.atualizarRegistro(getArquivo(), registroID, registro);
-    }
-
-    public void delete(String registroID) {
-        BancoDeDados.deletarRegistro(getArquivo(), registroID);
-    }
 }
