@@ -4,42 +4,47 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+
+import main.java.database.BancoDeDados;
 import main.java.entity.Genero;
 
 
 public class ModelGenero {
 
-    private final String arquivo = "c:\\tmp\\genero.txt";
+    public static void criar(Genero genero){
+        String id = genero.getId();
+        String nome = genero.getNome();
 
-    public String getArquivo() {
-        return arquivo;
+        String dados = id+";"+nome;
+
+        BancoDeDados.salvarNovoRegistro("genero.csv", dados);
+
     }
 
+    public static ArrayList<Genero> listarRegistros(){
+        ArrayList<String[]> registros = BancoDeDados.lerListaDeRegistros("genero.csv");
+        ArrayList<Genero> nome = new ArrayList<>();
 
-    public void salvar(Genero genero) {
-        abrirArquivoParaEscrita(getArquivo(), String.valueOf(genero.getId()));
-        abrirArquivoParaEscrita(getArquivo(), genero.getNome());
-    }
-
-
-    public static void abrirArquivoParaEscrita(String nome, String linha) {
-        FileWriter fwArquivo;
-        BufferedWriter bwArquivo;
-        try {
-            File arquivo = new File(nome);
-
-            fwArquivo = new FileWriter(arquivo, arquivo.exists());
-            bwArquivo = new BufferedWriter(fwArquivo);
-            bwArquivo.write(linha + '\n');
-
-            // fechando o arquivo
-            bwArquivo.close();
-            fwArquivo.close();
-
-        } catch (IOException e) {
-            System.err.println("Erro ao tentar escrever no arquivo: " + e.toString());
+        for (String[] registro : registros) {
+            nome.add(new Genero(
+                registro[0], registro[1]));
         }
+
+        return nome;
     }
 
+   public static void atualizarRegistro(String id, Genero genero){
+
+        String nome = genero.getNome();
+
+        String registro = id+";"+nome;
+
+        BancoDeDados.atualizarRegistro("genero.csv", id, registro);
+    }
+
+    public static void apagarRegistro(String id){
+        BancoDeDados.deletarRegistro("genero.csv", id);
+    }
 
 }

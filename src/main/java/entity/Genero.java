@@ -2,19 +2,19 @@ package main.java.entity;
 
 public class Genero {
 
-    private int id;
+    private String id;
     private String nome;
 
-    public Genero(int id, String nome) {
+    public Genero(String id, String nome) {
         this.id = id;
         this.nome = nome;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
