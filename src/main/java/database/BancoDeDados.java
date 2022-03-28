@@ -1,5 +1,3 @@
-// TODO: Implementar update/ delete registro
-
 package main.java.database;
 
 import java.io.File;
@@ -7,7 +5,6 @@ import java.io.FileWriter;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class BancoDeDados {
@@ -30,7 +27,7 @@ public class BancoDeDados {
         }
     }
 
-    static public List<String[]> lerListaDeRegistros(String nomeArquivo) {
+    static public ArrayList<String[]> lerListaDeRegistros(String nomeArquivo) {
         ArrayList<String[]> registers = new ArrayList<>();
         try {
             File file = new File(nomeArquivo);
@@ -39,7 +36,6 @@ public class BancoDeDados {
             while (fileReader.hasNextLine()) {
                 String data = fileReader.nextLine();
                 registers.add(data.split(";"));
-                System.out.println(data);
             }
             fileReader.close();
 
@@ -48,5 +44,60 @@ public class BancoDeDados {
         }
         return registers;
     }
+
+    
+    static public void atualizarRegistro(String nomeArquivo, String registroID, String registro) {
+        try {
+            File file = new File(nomeArquivo);
+            File tempFile = new File("temp" + nomeArquivo);
+
+            FileWriter fwTempArquivo = new FileWriter(tempFile);
+            BufferedWriter bwTempArquivo = new BufferedWriter(fwTempArquivo);
+            Scanner fileReader = new Scanner(file);
+
+            while (fileReader.hasNextLine()) {
+                String data = fileReader.nextLine();
+                if (data.split(";")[0].equals(registroID)) {
+                    bwTempArquivo.write(registro + "\n");
+                } else {
+                    bwTempArquivo.write(data + "\n");
+                }
+            }
+            bwTempArquivo.close();
+            fileReader.close();
+            file.delete();
+            tempFile.renameTo(file);
+
+        } catch (IOException e) {
+            System.err.println("Erro ao tentar escrever no arquivo: " + e.toString());
+        }
+    }
+
+    static public void deletarRegistro(String nomeArquivo, String registroID) {
+        try {
+            File file = new File(nomeArquivo);
+            File tempFile = new File("temp" + nomeArquivo);
+
+            FileWriter fwTempArquivo = new FileWriter(tempFile);
+            BufferedWriter bwTempArquivo = new BufferedWriter(fwTempArquivo);
+            Scanner fileReader = new Scanner(file);
+
+            while (fileReader.hasNextLine()) {
+                String data = fileReader.nextLine();
+                if (data.split(";")[0].equals(registroID)) {
+                    continue;
+                }
+                bwTempArquivo.write(data + "\n");
+            }
+            bwTempArquivo.close();
+            fileReader.close();
+            file.delete();
+            tempFile.renameTo(file);
+
+        } catch (IOException e) {
+            System.err.println("Erro ao tentar escrever no arquivo: " + e.toString());
+        }
+    }
+
     
 }
