@@ -1,26 +1,30 @@
 package main.java.entity;
+import java.util.UUID;
 
 
 public class Filmes {
 
-    private int id;
+    private String id;
     private String titulo;
     private String genero;
     private String classificacao;
 
-    public Filmes(int id, String titulo, String genero, String classificacao) {
+    public Filmes(String id, String titulo, String genero, String classificacao) {
         this.id = id;
         this.titulo = titulo;
         this.genero = genero;
         this.classificacao = classificacao;
     }
 
-    public int getId() {
-        return id;
+    public Filmes(String titulo, String genero, String classificacao) {
+        this.id = UUID.randomUUID().toString();
+        this.titulo = titulo;
+        this.genero = genero;
+        this.classificacao = classificacao;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public String getId() {
+        return id;
     }
 
     public String getTitulo() {
