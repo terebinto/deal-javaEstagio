@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.BufferedWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -30,7 +31,7 @@ public class BancoDeDados {
     }
 
     static public List<String[]> lerListaDeRegistros(String nomeArquivo) {
-        List<String[]> registers = List.of();
+        ArrayList<String[]> registers = new ArrayList<>();
         try {
             File file = new File(nomeArquivo);
 
