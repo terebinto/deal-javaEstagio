@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class BancoDeDados {
-    
+
     static public void salvarNovoRegistro(String nomeArquivo, String texto) {
         try {
             FileWriter fwArquivo;
@@ -45,7 +45,6 @@ public class BancoDeDados {
         return registers;
     }
 
-    
     static public void atualizarRegistro(String nomeArquivo, String registroID, String registro) {
         try {
             File file = new File(nomeArquivo);
@@ -99,5 +98,4 @@ public class BancoDeDados {
         }
     }
 
-    
 }
