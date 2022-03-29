@@ -31,6 +31,14 @@ public class ModelClientes {
             
         } 
     }
+
+    public void alterar( String registroID, Clientes cliente){
+    String registro = cliente.getNome()+";"+;cliente.getid()+";"+cliente.getRg()+";"+cliente.getCpf();
+    BancoDeDados.atualizarRegistro(getArquivo(), registroID, registro);
 }
 
 
+    public void delete(String registroID){
+    BancoDeDados.deletarRegistro(getArquivo(), registroID);
+     }
+}
