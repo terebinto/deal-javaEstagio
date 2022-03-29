@@ -1,18 +1,30 @@
 package main.java.entity;
 
-public class Clientes {
+import java.util.UUID;
 
+public class Cliente {
+
+    private String id;
     private String nome;
-    // private String endereco;
     private String rg;
     private String cpf;
-    private int id;
 
-    public Clientes(String nome, String rg, String cpf, int id) {
+    public Cliente(String id, String nome, String rg, String cpf) {
+        this.id = id;
         this.nome = nome;
         this.rg = rg;
         this.cpf = cpf;
-        this.id = id;
+    }
+
+    public Cliente(String nome, String rg, String cpf) {
+        this.id = UUID.randomUUID().toString();
+        this.nome = nome;
+        this.rg = rg;
+        this.cpf = cpf;
+    }
+
+    public String getId() {
+        return id;
     }
 
     public String getNome() {
@@ -39,12 +51,5 @@ public class Clientes {
         this.cpf = cpf;
     }
 
-    public int getid() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
 }

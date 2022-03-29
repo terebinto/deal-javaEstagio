@@ -2,29 +2,29 @@ package main.java.controller;
 
 import java.util.ArrayList;
 
-import main.java.entity.Filmes;
-import main.java.model.ModelFilmes;
+import main.java.entity.Filme;
+import main.java.model.ModelFilme;
 
 public class ControllerFilme {
 
-    public static void criar(Filmes filme) {
-        ModelFilmes.criar(filme);
+    public static void salvar(Filme filme) {
+        ModelFilme.criar(filme);
     }
 
-    public static ArrayList<Filmes> listarRegistros() {
-        return ModelFilmes.listarRegistros();
+    public static ArrayList<Filme> listarRegistros() {
+        return ModelFilme.listar();
     }
 
-    public static Filmes listarRegistroPorId(String id) {
-        return ModelFilmes.listarRegistroPorId(id);
+    public static Filme listarRegistroPorId(String id) {
+        return ModelFilme.listarPorId(id);
     }
 
-    public static void atualizarRegistro(String id, Filmes filme) {
-        ModelFilmes.atulizarRegistro(id, filme);
+    public static void atualizarRegistro(String id, Filme filme) {
+        ModelFilme.atualizar(id, filme);
     }
 
     public static void apagarRegistro(String id) {
-        ModelFilmes.apagarRegistro(id);
+        ModelFilme.apagarRegistro(id);
     }
 
 }

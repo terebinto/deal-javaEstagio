@@ -17,7 +17,7 @@ public class ModelGenero {
 
     }
 
-    public static ArrayList<Genero> listarRegistros() {
+    public static ArrayList<Genero> listar() {
         ArrayList<String[]> registros = BancoDeDados.lerListaDeRegistros("genero.csv");
         ArrayList<Genero> nome = new ArrayList<>();
 
@@ -29,7 +29,7 @@ public class ModelGenero {
         return nome;
     }
 
-    public static void atualizarRegistro(String id, Genero genero) {
+    public static void atualizar(String id, Genero genero) {
 
         String nome = genero.getNome();
 
