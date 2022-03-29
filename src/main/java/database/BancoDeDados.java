@@ -40,7 +40,7 @@ public class BancoDeDados {
             fileReader.close();
 
         } catch (IOException e) {
-            System.err.println("Erro ao tentar escrever no arquivo: " + e.toString());
+            System.err.println("Erro ao tentar ler o arquivo: " + e.toString());
         }
         return registers;
     }
@@ -62,13 +62,15 @@ public class BancoDeDados {
                     bwTempArquivo.write(data + "\n");
                 }
             }
+
             bwTempArquivo.close();
+            fwTempArquivo.close();
             fileReader.close();
             file.delete();
             tempFile.renameTo(file);
 
         } catch (IOException e) {
-            System.err.println("Erro ao tentar escrever no arquivo: " + e.toString());
+            System.err.println("Erro ao tentar modificar no arquivo: " + e.toString());
         }
     }
 
@@ -89,12 +91,13 @@ public class BancoDeDados {
                 bwTempArquivo.write(data + "\n");
             }
             bwTempArquivo.close();
+            fwTempArquivo.close();
             fileReader.close();
             file.delete();
             tempFile.renameTo(file);
 
         } catch (IOException e) {
-            System.err.println("Erro ao tentar escrever no arquivo: " + e.toString());
+            System.err.println("Erro ao tentar deletar do arquivo: " + e.toString());
         }
     }
 

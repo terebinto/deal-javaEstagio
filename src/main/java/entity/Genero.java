@@ -1,5 +1,7 @@
 package main.java.entity;
 
+import java.util.UUID;
+
 public class Genero {
 
     private String id;
@@ -10,12 +12,13 @@ public class Genero {
         this.nome = nome;
     }
 
-    public String getId() {
-        return id;
+    public Genero(String nome) {
+        this.id = UUID.randomUUID().toString();
+        this.nome = nome;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public String getId() {
+        return id;
     }
 
     public String getNome() {

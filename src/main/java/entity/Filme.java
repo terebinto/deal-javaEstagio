@@ -2,21 +2,21 @@ package main.java.entity;
 
 import java.util.UUID;
 
-public class Filmes {
+public class Filme {
 
     private String id;
     private String titulo;
     private String genero;
     private String classificacao;
 
-    public Filmes(String id, String titulo, String genero, String classificacao) {
+    public Filme(String id, String titulo, String genero, String classificacao) {
         this.id = id;
         this.titulo = titulo;
         this.genero = genero;
         this.classificacao = classificacao;
     }
 
-    public Filmes(String titulo, String genero, String classificacao) {
+    public Filme(String titulo, String genero, String classificacao) {
         this.id = UUID.randomUUID().toString();
         this.titulo = titulo;
         this.genero = genero;
